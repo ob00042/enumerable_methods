@@ -88,6 +88,31 @@ module Enumerable
 
 	end
 
+
+	def my_count(x=nil)
+		i=0
+		count=0
+		if block_given?
+			while i<self.size
+				if yield(self[i])
+					count+=1
+				end
+				i+=1
+			end
+			puts count
+		elsif x!=nil
+			while i<self.size
+				if self[i]==x
+					count+=1
+				end
+				i+=1
+			end
+			puts count
+		else
+			puts self.size
+		end
+	end
+
 end
 
 #([2,4,3,1]).my_each{|x| puts x*2}
@@ -95,5 +120,8 @@ end
 #([2,4,3,1]).my_select{|item| item%2==0}
 #([2,4,3,1]).my_all?{|x| x.is_a?(Integer)}
 #([2,4,3,1]).my_any?{|x| x==4}
-([2,4,3,1]).my_none?{|x| x.is_a?(String)}
+#([2,4,3,1]).my_none?{|x| x.is_a?(String)}
+([2,4,3,1]).my_count{|x| x%2==0}
+([2,4,3,1]).my_count
+([2,4,3,1]).my_count(2)
 
