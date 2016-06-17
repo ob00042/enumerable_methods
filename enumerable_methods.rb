@@ -113,6 +113,16 @@ module Enumerable
 		end
 	end
 
+	def my_map
+		i=0
+		new_array=[]
+		while i<self.size
+			new_array.push(yield(self[i]))
+			i+=1
+		end
+		print new_array
+	end
+
 end
 
 #([2,4,3,1]).my_each{|x| puts x*2}
@@ -121,7 +131,8 @@ end
 #([2,4,3,1]).my_all?{|x| x.is_a?(Integer)}
 #([2,4,3,1]).my_any?{|x| x==4}
 #([2,4,3,1]).my_none?{|x| x.is_a?(String)}
-([2,4,3,1]).my_count{|x| x%2==0}
-([2,4,3,1]).my_count
-([2,4,3,1]).my_count(2)
+#([2,4,3,1]).my_count{|x| x%2==0}
+#([2,4,3,1]).my_count
+#([2,4,3,1]).my_count(2)
+([2,4,3,1]).my_map{|x| x*3}
 
