@@ -123,6 +123,16 @@ module Enumerable
 		print new_array
 	end
 
+	def my_inject(value=self[0])
+		i=0
+		while i<self.size
+			value = yield(value, self[i])
+			i+=1
+		end
+		puts value
+
+	end
+
 end
 
 #([2,4,3,1]).my_each{|x| puts x*2}
@@ -134,5 +144,8 @@ end
 #([2,4,3,1]).my_count{|x| x%2==0}
 #([2,4,3,1]).my_count
 #([2,4,3,1]).my_count(2)
-([2,4,3,1]).my_map{|x| x*3}
-
+#([2,4,3,1]).my_map{|x| x*3}
+([2,4,3,1]).my_inject(0){|total, x| total+x }
+(["cat", "sheep", "bear"]).my_inject do |memo, word|
+	memo.length>word.length ? memo : word
+end
