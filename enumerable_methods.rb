@@ -39,10 +39,30 @@ module Enumerable
 
 	end
 
+	def my_all?
+		k=0
+		i=0
+		
+		while i<self.size
+			if yield(self[i])
+				k+=1
+			end
+			i+=1
+		end
+		
+		if k==self.size
+			puts true
+		else
+			puts false
+		end
+
+	end
+
 
 end
 
 #([2,4,3,1]).my_each{|x| puts x*2}
 #([2,4,3,1]).my_each_with_index{|x,y| puts "#{x},#{y}"}
-([2,4,3,1]).my_select{|item| item%2==0}
+#([2,4,3,1]).my_select{|item| item%2==0}
+([2,4,3,1]).my_all?{|x| x.is_a?(Integer)}
 
