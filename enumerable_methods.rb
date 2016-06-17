@@ -135,6 +135,10 @@ module Enumerable
 
 end
 
+def multiply_els(array)
+	array.inject(1){|total,x| total*x}
+end
+
 #([2,4,3,1]).my_each{|x| puts x*2}
 #([2,4,3,1]).my_each_with_index{|x,y| puts "#{x},#{y}"}
 #([2,4,3,1]).my_select{|item| item%2==0}
@@ -145,7 +149,8 @@ end
 #([2,4,3,1]).my_count
 #([2,4,3,1]).my_count(2)
 #([2,4,3,1]).my_map{|x| x*3}
-([2,4,3,1]).my_inject(0){|total, x| total+x }
-(["cat", "sheep", "bear"]).my_inject do |memo, word|
-	memo.length>word.length ? memo : word
-end
+# ([2,4,3,1]).my_inject(0){|total, x| total+x }
+# (["cat", "sheep", "bear"]).my_inject do |memo, word|
+# 	memo.length>word.length ? memo : word
+# end
+puts multiply_els([2,4,5])
