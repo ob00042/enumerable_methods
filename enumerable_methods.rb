@@ -113,14 +113,34 @@ module Enumerable
 		end
 	end
 
-	def my_map
+	# def my_map
+	# 	i=0
+	# 	new_array=[]
+	# 	while i<self.size
+	# 		new_array << (yield(self[i]))
+	# 		i+=1
+	# 	end
+	# 	return new_array
+	# end
+
+	def my_map(&proc)
 		i=0
 		new_array=[]
-		while i<self.size
-			new_array.push(yield(self[i]))
+		
+		if block_given?
+			while i<self.size
+			new_array << (yield(self[i]))
 			i+=1
+			end
+			print new_array
+		else
+			while i<self.size
+				new_array<<proc.call(i)
+				i=+1
+			end
+			print new_array
 		end
-		print new_array
+
 	end
 
 	def my_inject(value=self[0])
@@ -153,4 +173,7 @@ end
 # (["cat", "sheep", "bear"]).my_inject do |memo, word|
 # 	memo.length>word.length ? memo : word
 # end
-puts multiply_els([2,4,5])
+#puts multiply_els([2,4,5])
+([2,4,3,1]).my_map{|x| x*3}
+a=Proc.new {|x| x*3}
+([2,4,3,1]).my_map(&a)
